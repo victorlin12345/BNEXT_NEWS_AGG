@@ -36,3 +36,8 @@ type Articles struct {
 	PucbicationDates []string `xml:"url>news>publication_date"`
 	Titles           []string `xml:"url>news>title"`
 }
+
+type Article struct {
+	Location        string
+	PucbicationDate string
+}
