@@ -1,0 +1,15 @@
+<h1>{{ .PageTile }}</h1>
+<table>
+    <thead>
+        <th>標題</th>
+        <th>時間</th>
+    </thead>
+    <tbody>
+        {{ range $key, $value := .News }}
+            <tr>
+                <td><a href="{{$value.Location}}" target="_blank">{{$key}}</a></td>
+                <td>{{$value.PucbicationDate}}</td>
+            </tr>
+        {{ end }}
+    </tbody>
+</table>
