@@ -18,3 +18,14 @@ func (smi *SitemapIndex) FeedData(index_url string) {
 	resp.Body.Close()
 	xml.Unmarshal(bytes, &smi)
 }
+
+// Methods - Pointer Receivers
+func (smi *SitemapIndex) GetLocations() []string {
+	var LocationList []string
+	for idx, Loc := range smi.Locations {
+		if idx != 0 {
+			LocationList = append(LocationList, Loc)
+		}
+	}
+	return LocationList
+}

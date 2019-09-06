@@ -8,10 +8,8 @@ func main() {
 
 	var smi SitemapIndex
 	smi.FeedData(INDEX_URL)
-
-	for idx, Loc := range smi.Locations {
-		if idx != 0 {
-			fmt.Println(Loc)
-		}
+	for _, Loc := range smi.GetLocations() {
+		fmt.Println(Loc)
 	}
+
 }
