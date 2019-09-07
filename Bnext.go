@@ -30,15 +30,15 @@ func (smi *SitemapIndex) GetLocations(max_len int) []string {
 	return LocationList
 }
 
+type Article struct {
+	Title           string
+	Location        string
+	PucbicationDate string
+}
+
 // struct for Articles
 type Articles struct {
 	Locations        []string `xml:"url>loc"`
 	PucbicationDates []string `xml:"url>news>publication_date"`
 	Titles           []string `xml:"url>news>title"`
-}
-
-type Article struct {
-	Title           string
-	Location        string
-	PucbicationDate string
 }
