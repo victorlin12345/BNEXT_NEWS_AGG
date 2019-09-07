@@ -20,10 +20,10 @@ func (smi *SitemapIndex) FeedData(index_url string) {
 }
 
 // Methods - Pointer Receivers
-func (smi *SitemapIndex) GetLocations() []string {
+func (smi *SitemapIndex) GetLocations(max_len int) []string {
 	var LocationList []string
 	for idx, Loc := range smi.Locations {
-		if idx != 0 {
+		if idx != 0 && idx <= max_len {
 			LocationList = append(LocationList, Loc)
 		}
 	}
@@ -38,6 +38,7 @@ type Articles struct {
 }
 
 type Article struct {
+	Title           string
 	Location        string
 	PucbicationDate string
 }

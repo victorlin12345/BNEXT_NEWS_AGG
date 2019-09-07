@@ -12,7 +12,7 @@ var INDEX_URL string = "https://www.bnext.com.tw/sitemap/google"
 // Struct for Showing Data
 type BNewsAggPage struct {
 	PageTile string
-	News     map[string]Article
+	News     []Article
 }
 
 func bnewsAggHandler(w http.ResponseWriter, r *http.Request) {
@@ -20,9 +20,9 @@ func bnewsAggHandler(w http.ResponseWriter, r *http.Request) {
 	var smi SitemapIndex
 	smi.FeedData(INDEX_URL)
 
-	article_map := make(map[string]Article)
+	var showlist []Article
 
-	for _, Loc := range smi.GetLocations() {
+	for _, Loc := range smi.GetLocations(5) {
 
 		var articles Articles
 		resp, _ := http.Get(Loc)
@@ -32,14 +32,15 @@ func bnewsAggHandler(w http.ResponseWriter, r *http.Request) {
 
 		for idx, _ := range articles.Locations {
 
-			a := Article{Location: articles.Locations[idx],
+			a := Article{Title: articles.Titles[idx],
+				Location:        articles.Locations[idx],
 				PucbicationDate: articles.PucbicationDates[idx]}
 
-			article_map[articles.Titles[idx]] = a
+			showlist = append(showlist, a)
 		}
 	}
 
-	p := BNewsAggPage{PageTile: "數位雜誌文章", News: article_map}
+	p := BNewsAggPage{PageTile: "數位雜誌文章", News: showlist}
 	t, _ := template.ParseFiles("agg.html")
 	t.Execute(w, p)
 
