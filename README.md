@@ -1,6 +1,6 @@
 # BNEXT_NEWS_AGG
 
-A practice of concurrency:
+### A practice of concurrency:
 - Collect bunch of sitemaps' news simultaneously.
 - Handle http code status: 429 Too Many Request.
 - Dispaly on my Web News Aggregation Page.
