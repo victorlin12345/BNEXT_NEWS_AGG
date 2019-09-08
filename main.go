@@ -49,7 +49,7 @@ func bnewsAggHandler(w http.ResponseWriter, r *http.Request) {
 	var batch_data []string
 	var queue chan Articles = make(chan Articles, 500)
 	var showlist []Article
-	var smooth_time time.Duration = 10
+	var smooth_time time.Duration = 1
 
 	start := time.Now()
 

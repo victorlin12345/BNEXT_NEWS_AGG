@@ -15,7 +15,9 @@ Run up my Web News Aggregation Page.
 ```
 
 ### Result
-Compare Concurrency with Sequiential Process of collecting 25000 News. ( log folder shows details )
+- Compare Concurrency with Sequiential Process of collecting 25000 News.
+- Result is heavily depended on the network speed.
+- log folder shows details.
 ```sh
   Sequiential: 2019/09/08 03:36:55 Collecting 25000 data took 19.418197275s
   Concurrency: 2019/09/08 03:38:27 Collecting 25000 data took 6.282016672s
